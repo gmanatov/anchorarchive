@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 
-# TODO Temporary Database - REMOVE THIS AFTER ADDING BOOKMARK MODEL
+# TODO Temporary DUMMY Database - REMOVE THIS AFTER ADDING BOOKMARK MODEL
 bookmarks = [
     {'date': '04/23/2024', 'title' : 'CSS Anchor Is The Best New CSS Feature Since Flexbox', 'url' : 'https://www.youtube.com/shorts/fO0XD75u2TI'},
     {'date': '05/02/2024', 'title' : 'Google apprenticeships for 2024 US', 'url' : 'https://www.reddit.com/r/google/comments/18b4tr2/google_apprenticeships_for_2024_us/'},
