@@ -5,4 +5,4 @@ urlpatterns = [
     path('', views.home),
     path('about/', views.about),
     path('bookmarks/', views.bookmarks_index),
-]
+] 
