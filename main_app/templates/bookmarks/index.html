@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Bookmarks List</h1>
+
+{% for bookmark in bookmarks %}
+<div class="card">
+    <div class="card-content">
+        <span class="card-title">{{ bookmark.title }}</span>
+        <p>Link: {{ bookmark.url }}</p>
+        <p>Date of adding: {{ bookmark.date }}</p>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}
