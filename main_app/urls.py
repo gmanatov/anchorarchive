@@ -14,4 +14,6 @@ urlpatterns = [
     path('tags/create/', views.TagCreate.as_view(), name='tags_create'),
     path('tags/<int:pk>/update/', views.TagUpdate.as_view(), name='tags_update'),
     path('tags/<int:pk>/delete/', views.TagDelete.as_view(), name='tags_delete'),
+    path('bookmarks/<int:bookmark_id>/assoc_tag/<int:tag_id>/', views.assoc_tag, name='assoc_tag'),
+    path('bookmarks/<int:bookmark_id>/unassoc_tag/<int:tag_id>/', views.unassoc_tag, name='unassoc_tag'),
 ] 
