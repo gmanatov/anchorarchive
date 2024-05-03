@@ -10,9 +10,20 @@ def about(request):
     return render(request, 'about.html')
 
 def bookmarks_index(request):
+    bookmarks = Bookmark.objects.all()
     return render(request, 'bookmarks/index.html', {
         'bookmarks': bookmarks
     })
+
+
+
+
+
+
+
+
+
+
 
 # TODO Temporary DUMMY Database - REMOVE THIS AFTER ADDING BOOKMARK MODEL
 # bookmarks = [
