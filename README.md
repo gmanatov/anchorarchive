@@ -14,4 +14,6 @@ Screenshots:
 ![](<https://i.imgur.com/m5PVVvU.png>)
 
 Next Steps:
- - Add bookmark analytics to the app
+ - Add option to add Tags to Bookmark
+ - Authentication
+ - Deployment
