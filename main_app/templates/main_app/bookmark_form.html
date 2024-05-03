@@ -1,8 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Create Bookmark!</h1>
+
+{% if object %}
+<h1>Edit Bookmark</h1>
+{% else %}
+<h1>Create Bookmark</h1>
+{% endif %}
+
 <hr>
+
 <form action="" method="POST">
     {% csrf_token %}
     <table>

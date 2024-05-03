@@ -1,8 +1,6 @@
 from django.shortcuts import render
 from .models import Bookmark
-from django.views.generic.edit import CreateView
-
-# Create your views here.
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 def home(request):
     return render(request, 'home.html')
@@ -17,7 +15,6 @@ def bookmarks_index(request):
     })
 
 def bookmarks_detail(request, bookmark_id):
-    # we need to commuicate with the database here
     bookmark = Bookmark.objects.get(id=bookmark_id)
     return render(request, 'bookmarks/detail.html', {
         'bookmark': bookmark
@@ -26,6 +23,14 @@ def bookmarks_detail(request, bookmark_id):
 class BookmarkCreate(CreateView):
     model = Bookmark
     fields = '__all__'
+
+class BookmarkUpdate(UpdateView):
+    model = Bookmark
+    fields = ('title', 'url')
+
+class BookmarkDelete(DeleteView):
+    model = Bookmark
+    success_url = '/bookmarks/'
 
 
 
