@@ -23,6 +23,7 @@
 <div class="row">
     <div class="col s12"> 
         <h5>Tags for this bookmark:</h5>
+        {% if bookmark.tags.count %}
         {% for tag in bookmark.tags.all %}
         <div class="card" style="display: inline-block; margin-right: 10px;">
             <div class="card-content">
@@ -32,6 +33,9 @@
             </div>
         </div>
         {% endfor%}
+        {% else %}
+        <h6>There are no tags yet for this bookmark</h6>
+        {% endif %}
     </div>
 </div>
 
