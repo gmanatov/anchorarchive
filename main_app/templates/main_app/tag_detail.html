@@ -9,11 +9,11 @@
       <div class="card-content">
         <span class="card-title">{{ tag.name }}</span>
         <p>Description: {{ tag.desc }}</p>
-      {% comment %} </div>
+      </div>
       <div class="card-action">
-        <a href="{% url 'tags_update' tag.id %}">Edit</a>
-        <a href="{% url 'tags_delete' tag.id %}">Delete</a>
-      </div> {% endcomment %}
+        <a class="btn orange"  href="{% url 'tags_update' tag.id %}">Edit</a>
+        <a class="btn red" href="{% url 'tags_delete' tag.id %}">Delete</a>
+      </div>
     </div>
   </div>
 </div>

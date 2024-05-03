@@ -43,6 +43,14 @@ class TagCreate(CreateView):
   model = Tag
   fields = '__all__'
 
+class TagUpdate(UpdateView):
+  model = Tag
+  fields = ['name', 'desc']
+
+class TagDelete(DeleteView):
+  model = Tag
+  success_url = '/tags'
+
 
 
 
