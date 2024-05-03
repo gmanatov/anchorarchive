@@ -11,8 +11,8 @@
         <p>id:  {{ bookmark.id }}</p>
     </div>
     <div class="card-action">
-        <a href="{% url 'bookmarks_update' bookmark.id %}">Edit</a>
-        <a href="{% url 'bookmarks_delete' bookmark.id %}">Delete</a>
+        <a class="btn orange" href="{% url 'bookmarks_update' bookmark.id %}">Edit</a>
+        <a class="btn red" href="{% url 'bookmarks_delete' bookmark.id %}">Delete</a>
     </div>
 </div>
 
