@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Bookmark
+from django.views.generic.edit import CreateView
 
 # Create your views here.
 
@@ -21,6 +22,10 @@ def bookmarks_detail(request, bookmark_id):
     return render(request, 'bookmarks/detail.html', {
         'bookmark': bookmark
     })
+
+class BookmarkCreate(CreateView):
+    model = Bookmark
+    fields = '__all__'
 
 
 
