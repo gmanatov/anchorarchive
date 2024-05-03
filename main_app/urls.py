@@ -11,4 +11,5 @@ urlpatterns = [
     path('bookmarks/<int:pk>/delete/', views.BookmarkDelete.as_view(), name='bookmarks_delete'),
     path('tags/', views.TagList.as_view(), name='tags_index'),
     path('tags/<int:pk>/', views.TagDetail.as_view(), name='tags_detail'),
+    path('tags/create/', views.TagCreate.as_view(), name='tags_create'),
 ] 

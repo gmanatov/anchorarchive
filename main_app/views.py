@@ -39,6 +39,10 @@ class TagList(ListView):
 class TagDetail(DetailView):
   model = Tag
 
+class TagCreate(CreateView):
+  model = Tag
+  fields = '__all__'
+
 
 
 
