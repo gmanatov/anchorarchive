@@ -6,7 +6,9 @@
 {% for tag in tag_list %}
   <a href="{% url 'tags_detail' tag.id %}">
     <div class="card">
-        <div class="card-content">
+        <div style="color: black;" class="card-content"  
+        onmouseover="this.style.color='#0d47a1';" 
+        onmouseout="this.style.color='black';">
             <span class="card-title">{{ tag.name }}</span>
             <p>Description: {{ tag.desc }}</p>
         </div>
