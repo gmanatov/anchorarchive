@@ -11,7 +11,7 @@ def about(request):
     return render(request, 'about.html')
 
 def bookmarks_index(request):
-    bookmarks = Bookmark.objects.all()
+    bookmarks = Bookmark.objects.all().order_by('-id')
     return render(request, 'bookmarks/index.html', {
         'bookmarks': bookmarks
     })
