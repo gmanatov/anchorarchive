@@ -7,7 +7,9 @@
 
 <a href="/bookmarks/{{ bookmark.id }}">
     <div class="card">
-        <div class="card-content">
+        <div style="color: black;" class="card-content"  
+        onmouseover="this.style.color='#0d47a1';" 
+        onmouseout="this.style.color='black';">
             <span class="card-title">{{ bookmark.title }}</span>
             <p style="word-break: break-all;">Link: {{ bookmark.url }}</p>
             <p>Date of adding: {{ bookmark.date_created }}</p>
