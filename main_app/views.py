@@ -36,6 +36,9 @@ class BookmarkDelete(DeleteView):
 class TagList(ListView):
     model = Tag
 
+class TagDetail(DetailView):
+  model = Tag
+
 
 
 
