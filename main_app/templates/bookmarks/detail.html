@@ -10,7 +10,6 @@
                 <span class="card-title">{{ bookmark.title }}</span>
                 <p style="word-break: break-all;">Link: <a href="{{ bookmark.url }}" target="_blank">{{ bookmark.url }}</a></p>
                 <p>Date of adding: {{ bookmark.date_created }}</p>
-                <p>id:  {{ bookmark.id }}</p>
             </div>
             <div class="card-action">
                 <a class="btn orange" href="{% url 'bookmarks_update' bookmark.id %}">Edit</a>
@@ -22,8 +21,8 @@
 
 <div class="row">
     <div class="col s12"> 
-        <h5>Tags for this bookmark:</h5>
         {% if bookmark.tags.count %}
+        <h5>Tags for this bookmark:</h5>
         {% for tag in bookmark.tags.all %}
         <div class="card" style="display: inline-block; margin-right: 10px;">
             <div class="card-content">
