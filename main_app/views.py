@@ -1,6 +1,7 @@
-from django.shortcuts import render
-from .models import Bookmark
+from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView
+from .models import Bookmark, Tag
 
 def home(request):
     return render(request, 'home.html')
@@ -31,6 +32,9 @@ class BookmarkUpdate(UpdateView):
 class BookmarkDelete(DeleteView):
     model = Bookmark
     success_url = '/bookmarks/'
+
+class TagList(ListView):
+    model = Tag
 
 
 

@@ -9,4 +9,5 @@ urlpatterns = [
     path('bookmarks/create/', views.BookmarkCreate.as_view(), name='bookmarks_create'),
     path('bookmarks/<int:pk>/update/', views.BookmarkUpdate.as_view(), name='bookmarks_update'),
     path('bookmarks/<int:pk>/delete/', views.BookmarkDelete.as_view(), name='bookmarks_delete'),
+    path('tags/', views.TagList.as_view(), name='tags_index'),
 ] 
