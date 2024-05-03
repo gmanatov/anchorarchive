@@ -15,6 +15,13 @@ def bookmarks_index(request):
         'bookmarks': bookmarks
     })
 
+def bookmarks_detail(request, bookmark_id):
+    # we need to commuicate with the database here
+    bookmark = Bookmark.objects.get(id=bookmark_id)
+    return render(request, 'bookmarks/detail.html', {
+        'bookmark': bookmark
+    })
+
 
 
 
