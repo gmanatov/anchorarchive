@@ -7,8 +7,12 @@ Technologies used:
  - PostgreSQL
  - Materialize CSS
 
-### Getting Started: <link>
+### Getting Started: [<link>](http://127.0.0.1:8000/)
 
 Screenshots:
-![](<screenshot>)
-![](<screenshot>)
+![](<https://i.imgur.com/hfZfRAv.png>)
+![](<https://i.imgur.com/m5PVVvU.png>)
+
+Next Steps:
+ - Add authentication
+ - Deploy

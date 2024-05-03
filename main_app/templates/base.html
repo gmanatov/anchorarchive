@@ -10,8 +10,27 @@
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
+
+
+<video autoplay muted loop style="
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    background: no-repeat;
+    background-size: cover;
+    overflow: hidden;">
+    <source src="{% static 'myapp/videos/background.mp4' %}" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+<div>
   <header class="navbar-fixed">
-    <nav class="blue darken-4">
+    <nav class="black">
       <div class="nav-wrapper">
         <ul>
           <li><a href="{% url 'home' %}" class="left brand-logo">&nbsp;&nbsp;Anchor Archive</a></li>
@@ -26,12 +45,17 @@
       </div>
     </nav>
   </header>
-  <main class="container">
+
+  <main style=" 
+  padding: 15px;
+  border-radius: 5px;" 
+  class="container">
     {% block content %}
     {% endblock %}
   </main>
-  <footer class="page-footer blue darken-4">
-    <div class="right">All Rights Reserved, &copy; 2024 Galymzhan Manatov &nbsp;</div>
-  </footer>
+  
+</div>
+
+
 </body>
 </html>
