@@ -7,7 +7,7 @@
     <label for="sort">Sort by:</label>
     <select id="sort" name="sort" onchange="this.form.submit()">
         <option value="id_asc" {% if request.GET.sort == 'id_asc' %}selected{% endif %}>Date (First to Last)</option>
-        <option value="id_desc" {% if request.GET.sort == 'id_desc' %}selected{% endif %}>Date (Last to First)</option>
+        <option value="id_desc" {% if request.GET.sort == 'id_desc' or not request.GET.sort %}selected{% endif %}>Date (Last to First)</option>
         <option value="title_asc" {% if request.GET.sort == 'title_asc' %}selected{% endif %}>Title (A-Z)</option>
         <option value="title_desc" {% if request.GET.sort == 'title_desc' %}selected{% endif %}>Title (Z-A)</option>
     </select>
