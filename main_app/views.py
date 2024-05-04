@@ -31,11 +31,11 @@ def unassoc_tag(request, bookmark_id, tag_id):
 
 class BookmarkCreate(CreateView):
     model = Bookmark
-    fields = ['title', 'url', 'tags']
+    fields = '__all__'
 
 class BookmarkUpdate(UpdateView):
     model = Bookmark
-    fields = ('title', 'url')
+    fields = '__all__'
 
 class BookmarkDelete(DeleteView):
     model = Bookmark
