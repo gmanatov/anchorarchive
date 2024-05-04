@@ -31,7 +31,7 @@ def unassoc_tag(request, bookmark_id, tag_id):
 
 class BookmarkCreate(CreateView):
     model = Bookmark
-    fields = ['title', 'url']
+    fields = ['title', 'url', 'tags']
 
 class BookmarkUpdate(UpdateView):
     model = Bookmark

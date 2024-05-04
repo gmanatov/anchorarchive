@@ -12,17 +12,9 @@
 
 <form action="" method="POST">
     {% csrf_token %}
-    <table style="text-color: white;">
+    <table>
         {{ form.as_table }}
     </table>
-
-    <label for="colors">Choose tags:</label>
-    <select multiple="multiple" name="colors[]" id="colors">
-        <option value="red">Red</option>
-        <option value="blue">Blue</option>
-        <option value="green">Green</option>
-        <option value="yellow">Yellow</option>
-    </select>
 
     <input type="submit" value="Submit" class="btn green">
     
