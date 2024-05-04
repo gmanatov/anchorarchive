@@ -61,7 +61,6 @@ class BookmarkCreate(LoginRequiredMixin, CreateView):
     fields = ['title', 'url', 'tags']
 
     def get_form(self, form_class=None):
-        """Customize the form to limit tag choices to those associated with the user's bookmarks."""
         form = super(BookmarkCreate, self).get_form(form_class)
         user_bookmarks = Bookmark.objects.filter(user=self.request.user)
         user_tags_ids = user_bookmarks.values_list('tags', flat=True).distinct()
@@ -78,7 +77,6 @@ class BookmarkUpdate(LoginRequiredMixin, UpdateView):
     fields = ['title', 'url', 'tags']
 
     def get_form(self, form_class=None):
-        """Customize the form to limit tag choices to those associated with the user's bookmarks."""
         form = super(BookmarkUpdate, self).get_form(form_class)
         user_bookmarks = Bookmark.objects.filter(user=self.request.user)
         user_tags_ids = user_bookmarks.values_list('tags', flat=True).distinct()
@@ -95,7 +93,6 @@ class TagList(LoginRequiredMixin, ListView):
     template_name = 'tag_list.html'
 
     def get_queryset(self):
-        """Override to return only tags related to the bookmarks of the currently logged-in user."""
         user_bookmarks = Bookmark.objects.filter(user=self.request.user)
         tag_ids = user_bookmarks.values_list('tags', flat=True).distinct()
         return Tag.objects.filter(id__in=tag_ids)
