@@ -30,14 +30,6 @@ def bookmarks_detail(request, bookmark_id):
         'bookmark': bookmark
     })
 
-def assoc_tag(request, bookmark_id, tag_id):
-  Bookmark.objects.get(id=bookmark_id).tags.add(tag_id)
-  return redirect('detail', bookmark_id=bookmark_id)
-
-def unassoc_tag(request, bookmark_id, tag_id):
-  Bookmark.objects.get(id=bookmark_id).tags.remove(tag_id)
-  return redirect('detail', bookmark_id=bookmark_id)
-
 class BookmarkCreate(CreateView):
     model = Bookmark
     fields = '__all__'

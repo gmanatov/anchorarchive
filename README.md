@@ -17,6 +17,5 @@ https://i.imgur.com/hfZfRAv.png
 https://i.imgur.com/m5PVVvU.png
 
 Next Steps:
- - Add option to add Tags to Bookmark
  - Authentication
  - Deployment
