@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from datetime import date
 from django.contrib.auth.models import User
     
 class Tag(models.Model):
@@ -17,6 +18,7 @@ class Bookmark(models.Model):
     title = models.CharField(max_length=100)
     url = models.TextField(max_length=250)
     tags = models.ManyToManyField(Tag)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title

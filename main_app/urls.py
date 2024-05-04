@@ -14,4 +14,6 @@ urlpatterns = [
     path('tags/create/', views.TagCreate.as_view(), name='tags_create'),
     path('tags/<int:pk>/update/', views.TagUpdate.as_view(), name='tags_update'),
     path('tags/<int:pk>/delete/', views.TagDelete.as_view(), name='tags_delete'),
+    path('accounts/signup/', views.signup, name='signup'),
+    path('accounts/logout/', views.user_logout, name='user_logout'),
 ] 
