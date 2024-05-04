@@ -11,11 +11,10 @@ Technologies used:
 
 Screenshots:
 Screenshots:
-![](<https://i.imgur.com/hfZfRAv.png>)
-https://i.imgur.com/hfZfRAv.png
-![](<https://i.imgur.com/m5PVVvU.png>)
-https://i.imgur.com/m5PVVvU.png
+![](<https://i.imgur.com/SjuQ97F.png>)
+https://i.imgur.com/SjuQ97F.png
+![](<https://i.imgur.com/dfaPfTM.png>)
+https://i.imgur.com/dfaPfTM.png
 
 Next Steps:
- - Authentication
  - Deployment
