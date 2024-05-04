@@ -10,10 +10,22 @@ def about(request):
     return render(request, 'about.html')
 
 def bookmarks_index(request):
-    bookmarks = Bookmark.objects.all().order_by('-id')
-    return render(request, 'bookmarks/index.html', {
-        'bookmarks': bookmarks
-    })
+    sort = request.GET.get('sort', 'id')  # Default sorting by 'id'
+    if sort == 'title_asc':
+        bookmarks = Bookmark.objects.all().order_by('title')
+    elif sort == 'title_desc':
+        bookmarks = Bookmark.objects.all().order_by('-title')
+    elif sort == 'id_desc':
+        bookmarks = Bookmark.objects.all().order_by('-id')
+    elif sort == 'id_asc':
+        bookmarks = Bookmark.objects.all().order_by('id')
+    else:  # Default and 'id_desc'
+        bookmarks = Bookmark.objects.all().order_by('-id')
+    return render(request, 'bookmarks/index.html', {'bookmarks': bookmarks})
+    # bookmarks = Bookmark.objects.all().order_by('-id')
+    # return render(request, 'bookmarks/index.html', {
+    #     'bookmarks': bookmarks
+    # })
 
 def bookmarks_detail(request, bookmark_id):
     bookmark = Bookmark.objects.get(id=bookmark_id)
