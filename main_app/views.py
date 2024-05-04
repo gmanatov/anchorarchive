@@ -8,6 +8,7 @@ from django.contrib.auth import logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Bookmark, Tag
+from django import forms
 
 def signup(request):
   error_message = ''
@@ -22,6 +23,11 @@ def signup(request):
   form = UserCreationForm()
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
+
+@login_required
+def user_logout(request):
+    logout(request)
+    return render(request, 'registration/login.html')
 
 def home(request):
     return render(request, 'home.html')
@@ -44,11 +50,6 @@ def bookmarks_index(request):
     return render(request, 'bookmarks/index.html', {'bookmarks': bookmarks})
 
 @login_required
-def user_logout(request):
-    logout(request)
-    return render(request, 'home.html')
-
-@login_required
 def bookmarks_detail(request, bookmark_id):
     bookmark = Bookmark.objects.get(id=bookmark_id)
     return render(request, 'bookmarks/detail.html', {
@@ -58,13 +59,38 @@ def bookmarks_detail(request, bookmark_id):
 class BookmarkCreate(LoginRequiredMixin, CreateView):
     model = Bookmark
     fields = ['title', 'url', 'tags']
+
+    def get_form(self, form_class=None):
+        """Customize the form to limit tag choices to those associated with the user's bookmarks."""
+        form = super(BookmarkCreate, self).get_form(form_class)
+        # Get a QuerySet of all bookmarks that belong to the user
+        user_bookmarks = Bookmark.objects.filter(user=self.request.user)
+        # Get a list of tag ids associated with the user's bookmarks
+        user_tags_ids = user_bookmarks.values_list('tags', flat=True).distinct()
+        # Filter the tags queryset for the form field
+        form.fields['tags'].queryset = Tag.objects.filter(id__in=user_tags_ids)
+        form.fields['tags'].required = False
+        return form
+
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
 class BookmarkUpdate(LoginRequiredMixin, UpdateView):
     model = Bookmark
-    fields = '__all__'
+    fields = ['title', 'url', 'tags']
+
+    def get_form(self, form_class=None):
+        """Customize the form to limit tag choices to those associated with the user's bookmarks."""
+        form = super(BookmarkUpdate, self).get_form(form_class)
+        # Get a QuerySet of all bookmarks that belong to the user
+        user_bookmarks = Bookmark.objects.filter(user=self.request.user)
+        # Get a list of tag ids associated with the user's bookmarks
+        user_tags_ids = user_bookmarks.values_list('tags', flat=True).distinct()
+        # Filter the tags queryset for the form field
+        form.fields['tags'].queryset = Tag.objects.filter(id__in=user_tags_ids)
+        form.fields['tags'].required = False
+        return form
 
 class BookmarkDelete(LoginRequiredMixin, DeleteView):
     model = Bookmark
@@ -72,9 +98,20 @@ class BookmarkDelete(LoginRequiredMixin, DeleteView):
 
 class TagList(LoginRequiredMixin, ListView):
     model = Tag
+    template_name = 'tag_list.html'  # Adjust the template name as needed
+
+    def get_queryset(self):
+        """Override to return only tags related to the bookmarks of the currently logged-in user."""
+        user_bookmarks = Bookmark.objects.filter(user=self.request.user)
+        tag_ids = user_bookmarks.values_list('tags', flat=True).distinct()
+        return Tag.objects.filter(id__in=tag_ids)
+
 
 class TagDetail(LoginRequiredMixin, DetailView):
     model = Tag
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 class TagCreate(LoginRequiredMixin, CreateView):
     model = Tag
