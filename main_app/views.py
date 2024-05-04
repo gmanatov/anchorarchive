@@ -63,11 +63,8 @@ class BookmarkCreate(LoginRequiredMixin, CreateView):
     def get_form(self, form_class=None):
         """Customize the form to limit tag choices to those associated with the user's bookmarks."""
         form = super(BookmarkCreate, self).get_form(form_class)
-        # Get a QuerySet of all bookmarks that belong to the user
         user_bookmarks = Bookmark.objects.filter(user=self.request.user)
-        # Get a list of tag ids associated with the user's bookmarks
         user_tags_ids = user_bookmarks.values_list('tags', flat=True).distinct()
-        # Filter the tags queryset for the form field
         form.fields['tags'].queryset = Tag.objects.filter(id__in=user_tags_ids)
         form.fields['tags'].required = False
         return form
@@ -83,11 +80,8 @@ class BookmarkUpdate(LoginRequiredMixin, UpdateView):
     def get_form(self, form_class=None):
         """Customize the form to limit tag choices to those associated with the user's bookmarks."""
         form = super(BookmarkUpdate, self).get_form(form_class)
-        # Get a QuerySet of all bookmarks that belong to the user
         user_bookmarks = Bookmark.objects.filter(user=self.request.user)
-        # Get a list of tag ids associated with the user's bookmarks
         user_tags_ids = user_bookmarks.values_list('tags', flat=True).distinct()
-        # Filter the tags queryset for the form field
         form.fields['tags'].queryset = Tag.objects.filter(id__in=user_tags_ids)
         form.fields['tags'].required = False
         return form
@@ -98,7 +92,7 @@ class BookmarkDelete(LoginRequiredMixin, DeleteView):
 
 class TagList(LoginRequiredMixin, ListView):
     model = Tag
-    template_name = 'tag_list.html'  # Adjust the template name as needed
+    template_name = 'tag_list.html'
 
     def get_queryset(self):
         """Override to return only tags related to the bookmarks of the currently logged-in user."""
