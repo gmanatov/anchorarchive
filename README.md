@@ -7,7 +7,7 @@ Technologies used:
  - PostgreSQL
  - Materialize CSS
 
-### Getting Started: http://127.0.0.1:8000/
+### Getting Started: https://anchorarchive-4d0f422985ae.herokuapp.com/
 
 Screenshots:
 Screenshots:
@@ -17,4 +17,4 @@ https://i.imgur.com/1TcTRHy.png
 https://i.imgur.com/bYirHBZ.png
 
 Next Steps:
- - Deployment
+ - Work on some tags index issues
